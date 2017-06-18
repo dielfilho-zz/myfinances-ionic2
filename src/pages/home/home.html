@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Finances
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngIf="expenses?.length == 0">
+    <ion-card-header>
+      Your Finances
+    </ion-card-header>
+    <ion-card-content>
+      You can use this app to control your finances. Tap into "New Spent" to add a new spent.
+    </ion-card-content>
+
+    <ion-item>
+      <button ion-button name="button" item-end clear  (click)="goToNewsSpent()">New Spent</button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngFor="let exp of expenses">
+    <ion-card-header>
+      {{exp.category}}
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        {{exp.description}} - {{exp.value}}
+      </p>
+      <p>
+        {{exp.date}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab right bottom *ngIf="expenses?.length > 0">
+    <button ion-fab (click)="goToNewsSpent()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

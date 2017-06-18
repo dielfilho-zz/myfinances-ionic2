@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Finances
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form (ngSubmit)="addNewExpense(expense)">
+
+      <ion-item>
+        <ion-label stacked>Value:</ion-label>
+        <ion-input type="number" [(ngModel)]="expense.value" name="value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Description:</ion-label>
+        <ion-input type="text" [(ngModel)]="expense.description" name="description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select [(ngModel)]="expense.category" name="category">
+          <ion-option *ngFor="let cat of expense.categories">{{cat}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="expense.date" name="date"></ion-datetime>
+      </ion-item>
+
+      <button type="submit" ion-button full margin-top>Add</button>
+    </form>
+  </ion-list>
+</ion-content>
